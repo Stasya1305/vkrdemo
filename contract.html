@@ -3,21 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Карточка договора · ПДС-2024-08812</title>
+  <title>ПДС-2024-08812 · карточка договора</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="app">
 
   <aside class="sidebar">
-    <div class="sidebar__logo">
-      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    <div class="brand">
+      <img class="brand__mark" src="assets/logo.svg" alt="">
+      <div class="brand__name">ГАЗФОНД</div>
+      <div class="brand__sub">пенсионные накопления</div>
     </div>
-    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <div class="sidebar__module">
+      <span class="sidebar__module-name">Мониторинг ПДС</span>
+      <span class="sidebar__module-badge">v0.4</span>
+    </div>
     <nav class="nav">
       <a href="index.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -36,11 +41,9 @@
       <a href="queue.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M2 4h12M2 8h12M2 12h12"/>
-          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
-          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
-          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
         </svg>
         Очередь матчинга
+        <span class="nav__badge">406</span>
       </a>
       <a href="about.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -50,63 +53,84 @@
         Архитектура
       </a>
     </nav>
-    <div class="sidebar__footer">
-      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
-      Монанкова А.Г., 2026<br>
-      Бизнес-информатика, ВШЭ
+    <div class="sidebar__user">
+      <div class="sidebar__avatar">МА</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name">Монанкова А. Г.</div>
+        <div class="sidebar__user-role">Отдел аналитики</div>
+      </div>
     </div>
   </aside>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <img class="topbar__mark" src="assets/logo.svg" alt="">
+      <div>
+        <div class="topbar__name">ГАЗФОНД</div>
+        <div class="topbar__sub">мониторинг ПДС</div>
+      </div>
+    </div>
+    <button class="topbar__menu" aria-label="меню" onclick="document.querySelector('.mobile-nav').classList.toggle('mobile-nav--open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </header>
+  <nav class="mobile-nav">
+    <a href="index.html" class="nav__item">Дашборд</a>
+    <a href="contract.html" class="nav__item nav__item--active">Карточка договора</a>
+    <a href="queue.html" class="nav__item">Очередь матчинга <span class="nav__badge">406</span></a>
+    <a href="about.html" class="nav__item">Архитектура</a>
+  </nav>
 
   <main class="main">
 
     <header class="page-header">
-      <div>
+      <div class="page-header__left">
+        <div class="page-header__crumb"><a href="index.html">← Дашборд</a> · карточка договора</div>
         <h1 class="page-header__title">Карточка договора</h1>
-        <p class="page-header__subtitle">Полная лента событий и активные задачи</p>
+        <p class="page-header__subtitle">
+          <span class="sync-dot"></span>лента событий обновлена в 09:00<span class="dot">·</span>в работе у А. В. Смирновой
+        </p>
       </div>
-      <a href="index.html" class="btn btn--ghost">← К дашборду</a>
     </header>
 
-    <!-- Contract header -->
     <div class="contract-header">
       <div>
         <p class="contract-header__no">ПДС-2024-08812</p>
         <h2 class="contract-header__name">Петрова Ирина Александровна</h2>
         <p class="contract-header__meta">
-          Оформлен 12 апр. 2026<span class="dot" style="margin: 0 6px; opacity: 0.5;">·</span>канал: CRM-рассылка<span class="dot" style="margin: 0 6px; opacity: 0.5;">·</span>менеджер: Смирнова А.В.
+          Оформлен 12 апр. 2026<span class="dot" style="margin: 0 6px; opacity: 0.5;">·</span>канал: CRM-рассылка<span class="dot" style="margin: 0 6px; opacity: 0.5;">·</span>менеджер: Смирнова А. В.
         </p>
       </div>
       <div class="contract-header__status">
         <span class="pill pill--status">Ожидает оплаты</span>
-        <span class="contract-header__overdue">Просрочено 14 дней</span>
+        <span class="contract-header__overdue">просрочено 14 дней</span>
       </div>
     </div>
 
-    <!-- Tracks -->
     <div class="track-row">
       <div class="track track--danger">
-        <p class="track__label">Трек: Оплата</p>
+        <p class="track__label">Трек 1 · оплата</p>
         <p class="track__status">Не оплачен</p>
         <p class="track__meta">14 дней без платежа</p>
       </div>
       <div class="track">
-        <p class="track__label">Трек: ОПС</p>
+        <p class="track__label">Трек 2 · ОПС</p>
         <p class="track__status" style="color: var(--text-primary);">Не подано</p>
         <p class="track__meta">ОПС применимо</p>
       </div>
       <div class="track track--neutral">
-        <p class="track__label">Трек: Автоплатёж</p>
+        <p class="track__label">Трек 3 · автоплатёж</p>
         <p class="track__status">Не подключён</p>
-        <p class="track__meta">Доступно после оплаты</p>
+        <p class="track__meta">доступно после оплаты</p>
       </div>
     </div>
 
-    <!-- Body: history + tasks/data -->
     <div class="contract-body">
 
-      <!-- Left: history -->
       <div class="section">
-        <h2 class="section__title">История событий</h2>
+        <div class="section__head">
+          <h2 class="section__title">История событий<span class="section__subtitle">журнал append-only</span></h2>
+        </div>
         <div class="timeline">
 
           <div class="timeline__item">
@@ -157,16 +181,19 @@
         </div>
       </div>
 
-      <!-- Right: tasks + client data -->
       <div class="section">
-        <h2 class="section__title">Активные задачи</h2>
+        <div class="section__head">
+          <h2 class="section__title">Активная задача</h2>
+        </div>
 
         <div class="task-box">
           <p class="task-box__title">Связаться с клиентом по оплате</p>
-          <p class="task-box__meta">Просрочено 7 дней · назначено: Смирнова А.В.</p>
+          <p class="task-box__meta">просрочено 7 дней · назначено: Смирнова А. В.</p>
         </div>
 
-        <h2 class="section__title">Данные клиента</h2>
+        <div class="section__head" style="margin-top: 4px;">
+          <h2 class="section__title">Данные клиента<span class="section__subtitle">обезличено по 152-ФЗ</span></h2>
+        </div>
         <div class="data-list">
           <div class="data-list__row">
             <span class="data-list__label">Телефон</span>
@@ -181,7 +208,7 @@
             <span class="data-list__value">Да</span>
           </div>
           <div class="data-list__row">
-            <span class="data-list__label">Канал</span>
+            <span class="data-list__label">Канал привлечения</span>
             <span class="data-list__value">CRM-рассылка</span>
           </div>
           <div class="data-list__row">
@@ -194,15 +221,12 @@
     </div>
 
     <footer class="footer-note">
-      <div>
-        Прототип карточки договора. Персональные данные обезличены (152-ФЗ).
-      </div>
-      <div>
-        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
-      </div>
+      <div>Карточка договора. Сегментация PII по принципу минимальных привилегий (RBAC).</div>
+      <div>А. Г. Монанкова · ВШЭ · 2026</div>
     </footer>
 
   </main>
 </div>
+<script src="js/app.js"></script>
 </body>
 </html>

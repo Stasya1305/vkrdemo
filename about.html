@@ -7,17 +7,22 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="app">
 
   <aside class="sidebar">
-    <div class="sidebar__logo">
-      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    <div class="brand">
+      <img class="brand__mark" src="assets/logo.svg" alt="">
+      <div class="brand__name">ГАЗФОНД</div>
+      <div class="brand__sub">пенсионные накопления</div>
     </div>
-    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <div class="sidebar__module">
+      <span class="sidebar__module-name">Мониторинг ПДС</span>
+      <span class="sidebar__module-badge">v0.4</span>
+    </div>
     <nav class="nav">
       <a href="index.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -36,11 +41,9 @@
       <a href="queue.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M2 4h12M2 8h12M2 12h12"/>
-          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
-          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
-          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
         </svg>
         Очередь матчинга
+        <span class="nav__badge">406</span>
       </a>
       <a href="about.html" class="nav__item nav__item--active">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -50,20 +53,42 @@
         Архитектура
       </a>
     </nav>
-    <div class="sidebar__footer">
-      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
-      Монанкова А.Г., 2026<br>
-      Бизнес-информатика, ВШЭ
+    <div class="sidebar__user">
+      <div class="sidebar__avatar">МА</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name">Монанкова А. Г.</div>
+        <div class="sidebar__user-role">Отдел аналитики</div>
+      </div>
     </div>
   </aside>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <img class="topbar__mark" src="assets/logo.svg" alt="">
+      <div>
+        <div class="topbar__name">ГАЗФОНД</div>
+        <div class="topbar__sub">мониторинг ПДС</div>
+      </div>
+    </div>
+    <button class="topbar__menu" aria-label="меню" onclick="document.querySelector('.mobile-nav').classList.toggle('mobile-nav--open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </header>
+  <nav class="mobile-nav">
+    <a href="index.html" class="nav__item">Дашборд</a>
+    <a href="contract.html" class="nav__item">Карточка договора</a>
+    <a href="queue.html" class="nav__item">Очередь матчинга <span class="nav__badge">406</span></a>
+    <a href="about.html" class="nav__item nav__item--active">Архитектура</a>
+  </nav>
 
   <main class="main">
 
     <header class="page-header">
-      <div>
-        <h1 class="page-header__title">Архитектура системы</h1>
+      <div class="page-header__left">
+        <div class="page-header__crumb"><a href="index.html">← Дашборд</a> · архитектура системы</div>
+        <h1 class="page-header__title">Архитектура и проектные решения</h1>
         <p class="page-header__subtitle">
-          Трёхуровневая модель<span class="dot">·</span>5 функциональных модулей<span class="dot">·</span>журнал событий append-only
+          Трёхуровневая модель<span class="dot">·</span>5 модулей<span class="dot">·</span>журнал событий append-only
         </p>
       </div>
     </header>
@@ -76,19 +101,19 @@
           <div class="archi-layer archi-layer--frontend">
             <p class="archi-layer__label">Уровень представления</p>
             <p class="archi-layer__tech">React SPA</p>
-            <p class="archi-layer__desc">Реестр договоров · карточка · дашборд · очередь матчинга</p>
+            <p class="archi-layer__desc">Реестр договоров, карточка, дашборд, очередь матчинга</p>
           </div>
-          <div class="archi-arrow">↓ REST API ↓</div>
+          <div class="archi-arrow">↓ REST / JSON ↓</div>
           <div class="archi-layer archi-layer--backend">
             <p class="archi-layer__label">Уровень бизнес-логики</p>
-            <p class="archi-layer__tech">FastAPI (Python)</p>
-            <p class="archi-layer__desc">5 модулей · алгоритм матчинга · триггеры КТ · расчёт KPI</p>
+            <p class="archi-layer__tech">FastAPI · Python</p>
+            <p class="archi-layer__desc">5 модулей, алгоритм матчинга, триггеры контрольных точек, расчёт KPI</p>
           </div>
           <div class="archi-arrow">↓ SQL ↓</div>
           <div class="archi-layer archi-layer--data">
             <p class="archi-layer__label">Уровень данных</p>
             <p class="archi-layer__tech">PostgreSQL</p>
-            <p class="archi-layer__desc">5 сущностей · журнал событий append-only · JSONB для атрибутов</p>
+            <p class="archi-layer__desc">5 сущностей, журнал событий append-only, JSONB для расширенных атрибутов</p>
           </div>
         </div>
       </div>
@@ -97,7 +122,7 @@
         <h3>Принципы проектирования</h3>
         <ul>
           <li>Единый идентификатор кейса — № договора, связывающий события из всех систем</li>
-          <li>Журнал событий append-only: ошибка исправляется корректирующим событием, DELETE не доступен</li>
+          <li>Журнал событий append-only: ошибка исправляется корректирующим событием, операция DELETE недоступна</li>
           <li>Модульность: новое событие или KPI без изменения ядра</li>
           <li>Наблюдаемость кейса: всегда виден текущий статус и следующий ожидаемый шаг</li>
           <li>Принцип минимальных привилегий: RBAC, 5 ролей</li>
@@ -135,7 +160,7 @@
       </div>
 
       <div class="about-card">
-        <h3>Целевые KPI (TO-BE)</h3>
+        <h3>Целевые KPI</h3>
         <div class="kpi-list">
           <div class="kpi-list__item">
             <span>Конверсия договор → оплата</span>
@@ -172,70 +197,66 @@
 
     </div>
 
-    <!-- ER scheme as a card -->
-    <div class="about-card" style="margin-bottom: 20px;">
-      <h3>Модель данных (упрощённая ER)</h3>
-      <p>Пять сущностей, в центре — договор. Все события связываются по <code style="font-family: var(--font-mono); background: var(--bg-card-soft); padding: 1px 6px; border-radius: 3px;">contract_id</code> — это сквозной идентификатор кейса для process mining.</p>
-      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 14px;">
-        <div class="module" style="text-align: center;">
-          <p class="module__num">ENTITY</p>
-          <p class="module__name">client</p>
-          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">client_id<br>name · phone</p>
+    <div class="about-card" style="margin-bottom: 18px;">
+      <h3>Модель данных <span style="font-weight: 400; color: var(--text-tertiary); font-size: 12.5px; margin-left: 6px;">упрощённая ER, реализация в PostgreSQL</span></h3>
+      <p>Пять сущностей; в центре — договор. Все события связываются по <code style="font-family: var(--font-mono); background: var(--bg-card-soft); padding: 1px 6px; border-radius: 3px; font-size: 12px;">contract_id</code> — это сквозной идентификатор кейса для process mining.</p>
+      <div class="er-grid">
+        <div class="er-entity">
+          <p class="er-entity__type">ENTITY</p>
+          <p class="er-entity__name">client</p>
+          <p class="er-entity__fields">client_id<br>name · phone</p>
         </div>
-        <div class="module" style="text-align: center; border-color: var(--brand-primary); background: var(--brand-primary-ghost);">
-          <p class="module__num">CORE</p>
-          <p class="module__name">contract</p>
-          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">contract_id<br>signed_at · channel</p>
+        <div class="er-entity er-entity--core">
+          <p class="er-entity__type">CORE</p>
+          <p class="er-entity__name">contract</p>
+          <p class="er-entity__fields">contract_id<br>signed_at · channel</p>
         </div>
-        <div class="module" style="text-align: center;">
-          <p class="module__num">LOG</p>
-          <p class="module__name">event</p>
-          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">event_id · type<br>occurred_at · jsonb</p>
+        <div class="er-entity">
+          <p class="er-entity__type">LOG</p>
+          <p class="er-entity__name">event</p>
+          <p class="er-entity__fields">event_id · type<br>occurred_at · jsonb</p>
         </div>
-        <div class="module" style="text-align: center;">
-          <p class="module__num">ENTITY</p>
-          <p class="module__name">payment</p>
-          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">payment_id<br>amount · confidence</p>
+        <div class="er-entity">
+          <p class="er-entity__type">ENTITY</p>
+          <p class="er-entity__name">payment</p>
+          <p class="er-entity__fields">payment_id<br>amount · confidence</p>
         </div>
-        <div class="module" style="text-align: center;">
-          <p class="module__num">ENTITY</p>
-          <p class="module__name">task</p>
-          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">task_id · trigger<br>deadline · status</p>
+        <div class="er-entity">
+          <p class="er-entity__type">ENTITY</p>
+          <p class="er-entity__name">task</p>
+          <p class="er-entity__fields">task_id · trigger<br>deadline · status</p>
         </div>
       </div>
     </div>
 
-    <div class="about-card" style="margin-bottom: 20px;">
+    <div class="about-card" style="margin-bottom: 18px;">
       <h3>Алгоритм матчинга платежей</h3>
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px;">
-        <div style="padding: 16px; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-card-soft);">
-          <p style="font-size: 10.5px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.6px; margin: 0 0 4px;">УРОВЕНЬ 1 · REGEX</p>
-          <p style="font-size: 13px; font-weight: 600; margin: 0 0 6px;">Точное совпадение</p>
-          <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Шаблон <code style="font-family: var(--font-mono);">ПДС-\d{4}-\d{6}</code> · confidence = 1,0 · автоматически</p>
+      <div class="match-levels">
+        <div class="match-level">
+          <p class="match-level__head">УРОВЕНЬ 1 · REGEX</p>
+          <p class="match-level__name">Точное совпадение</p>
+          <p class="match-level__desc">Шаблон <code>ПДС-\d{4}-\d{6}</code> · confidence = 1,0 · автоматически</p>
         </div>
-        <div style="padding: 16px; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-card-soft);">
-          <p style="font-size: 10.5px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.6px; margin: 0 0 4px;">УРОВЕНЬ 2 · FUZZY</p>
-          <p style="font-size: 13px; font-weight: 600; margin: 0 0 6px;">Нечёткий поиск</p>
-          <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">10-значная числовая последовательность · confidence = 0,8 · авто <em>только при единственном кандидате</em></p>
+        <div class="match-level">
+          <p class="match-level__head">УРОВЕНЬ 2 · FUZZY</p>
+          <p class="match-level__name">Нечёткий поиск</p>
+          <p class="match-level__desc">10-значная числовая последовательность · confidence = 0,8 · авто только при единственном кандидате</p>
         </div>
-        <div style="padding: 16px; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-card-soft);">
-          <p style="font-size: 10.5px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.6px; margin: 0 0 4px;">УРОВЕНЬ 3 · MANUAL</p>
-          <p style="font-size: 13px; font-weight: 600; margin: 0 0 6px;">Ручная очередь</p>
-          <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Сопоставление невозможно → бэк-офис, причина из классификатора</p>
+        <div class="match-level">
+          <p class="match-level__head">УРОВЕНЬ 3 · MANUAL</p>
+          <p class="match-level__name">Ручная очередь</p>
+          <p class="match-level__desc">Сопоставление невозможно → бэк-офис; причина из классификатора</p>
         </div>
       </div>
     </div>
 
     <footer class="footer-note">
-      <div>
-        Архитектура и проектные решения соответствуют главе 3 ВКР.
-      </div>
-      <div>
-        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
-      </div>
+      <div>Полное описание архитектуры — гл. 3 ВКР.</div>
+      <div>А. Г. Монанкова · ВШЭ · 2026</div>
     </footer>
 
   </main>
 </div>
+<script src="js/app.js"></script>
 </body>
 </html>

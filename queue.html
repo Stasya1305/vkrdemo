@@ -3,21 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Очередь несопоставленных платежей · ИС мониторинга ПДС</title>
+  <title>Очередь матчинга · ИС мониторинга ПДС</title>
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="app">
 
   <aside class="sidebar">
-    <div class="sidebar__logo">
-      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    <div class="brand">
+      <img class="brand__mark" src="assets/logo.svg" alt="">
+      <div class="brand__name">ГАЗФОНД</div>
+      <div class="brand__sub">пенсионные накопления</div>
     </div>
-    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <div class="sidebar__module">
+      <span class="sidebar__module-name">Мониторинг ПДС</span>
+      <span class="sidebar__module-badge">v0.4</span>
+    </div>
     <nav class="nav">
       <a href="index.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -36,11 +41,9 @@
       <a href="queue.html" class="nav__item nav__item--active">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M2 4h12M2 8h12M2 12h12"/>
-          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
-          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
-          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
         </svg>
         Очередь матчинга
+        <span class="nav__badge">406</span>
       </a>
       <a href="about.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -50,29 +53,53 @@
         Архитектура
       </a>
     </nav>
-    <div class="sidebar__footer">
-      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
-      Монанкова А.Г., 2026<br>
-      Бизнес-информатика, ВШЭ
+    <div class="sidebar__user">
+      <div class="sidebar__avatar">МА</div>
+      <div class="sidebar__user-info">
+        <div class="sidebar__user-name">Монанкова А. Г.</div>
+        <div class="sidebar__user-role">Отдел аналитики</div>
+      </div>
     </div>
   </aside>
+
+  <header class="topbar">
+    <div class="topbar__brand">
+      <img class="topbar__mark" src="assets/logo.svg" alt="">
+      <div>
+        <div class="topbar__name">ГАЗФОНД</div>
+        <div class="topbar__sub">мониторинг ПДС</div>
+      </div>
+    </div>
+    <button class="topbar__menu" aria-label="меню" onclick="document.querySelector('.mobile-nav').classList.toggle('mobile-nav--open')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </header>
+  <nav class="mobile-nav">
+    <a href="index.html" class="nav__item">Дашборд</a>
+    <a href="contract.html" class="nav__item">Карточка договора</a>
+    <a href="queue.html" class="nav__item nav__item--active">Очередь матчинга <span class="nav__badge">406</span></a>
+    <a href="about.html" class="nav__item">Архитектура</a>
+  </nav>
 
   <main class="main">
 
     <header class="page-header">
-      <div>
-        <h1 class="page-header__title">Очередь несопоставленных платежей</h1>
+      <div class="page-header__left">
+        <div class="page-header__crumb"><a href="index.html">← Дашборд</a> · очередь матчинга</div>
+        <h1 class="page-header__title">
+          Несопоставленные платежи
+          <span class="demo-tag">Demo data</span>
+        </h1>
         <p class="page-header__subtitle">
-          406 строк ожидают ручного матчинга<span class="dot">·</span>выписка от 28 апр. 2026
+          406 строк ожидают ручной обработки<span class="dot">·</span>выписка за 28 апр. 2026
         </p>
       </div>
-      <div style="display: flex; gap: 10px;">
+      <div class="page-header__actions">
         <button class="btn btn--ghost">Загрузить выписку</button>
-        <button class="btn btn--primary">Применить выбранное</button>
+        <button class="btn btn--primary">Применить</button>
       </div>
     </header>
 
-    <!-- KPI compact -->
     <section class="kpi-row">
       <div class="kpi-card">
         <p class="kpi-card__label">Всего строк в выписке</p>
@@ -80,17 +107,17 @@
         <p class="kpi-card__delta kpi-card__delta--neutral">за апрель</p>
       </div>
       <div class="kpi-card">
-        <p class="kpi-card__label">Авто-матчинг (regex)</p>
+        <p class="kpi-card__label">Авто-матчинг · regex</p>
         <p class="kpi-card__value">3 962</p>
         <p class="kpi-card__delta kpi-card__delta--up">82% · conf 1,0</p>
       </div>
       <div class="kpi-card">
-        <p class="kpi-card__label">Авто-матчинг (fuzzy)</p>
+        <p class="kpi-card__label">Авто-матчинг · fuzzy</p>
         <p class="kpi-card__value">464</p>
         <p class="kpi-card__delta kpi-card__delta--neutral">10% · conf 0,8</p>
       </div>
       <div class="kpi-card">
-        <p class="kpi-card__label">Ожидают ручной обработки</p>
+        <p class="kpi-card__label">Ручная обработка</p>
         <p class="kpi-card__value">406</p>
         <p class="kpi-card__delta kpi-card__delta--down">8,4% · цель ≤ 5%</p>
       </div>
@@ -103,93 +130,92 @@
         <button class="btn btn--ghost">Сумма ↓</button>
       </div>
 
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th style="width: 28px;"><input type="checkbox" aria-label="выбрать все"></th>
-            <th>Платёж</th>
-            <th>Назначение (фрагмент)</th>
-            <th>Причина</th>
-            <th>Кандидаты</th>
-            <th class="right">Сумма</th>
-            <th class="right">Действие</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><div class="queue-row-meta">28.04.2026<br>op-114520</div></td>
-            <td>Взнос по программе долгосрочных сбережений, Петров П. П.</td>
-            <td>Нет № договора</td>
-            <td>
-              <span class="candidate-chip">ПДС-2025-04127</span>
-              <span class="candidate-chip">ПДС-2025-03901</span>
-            </td>
-            <td class="right tnum">36 000 ₽</td>
-            <td class="right"><button class="btn btn--ghost btn--small">Сопоставить</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><div class="queue-row-meta">28.04.2026<br>op-114521</div></td>
-            <td>Оплата 2024088 12 Петрова Ирина Александровна</td>
-            <td>Неверный формат</td>
-            <td><span class="candidate-chip">ПДС-2024-08812</span></td>
-            <td class="right tnum">12 000 ₽</td>
-            <td class="right"><button class="btn btn--primary btn--small">Подтвердить</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><div class="queue-row-meta">28.04.2026<br>op-114529</div></td>
-            <td>Взнос ПДС-2025-00291, повторно</td>
-            <td>Дубль платежа</td>
-            <td>—</td>
-            <td class="right tnum">12 000 ₽</td>
-            <td class="right"><button class="btn btn--ghost btn--small">Вернуть</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><div class="queue-row-meta">27.04.2026<br>op-114488</div></td>
-            <td>Пополнение ПДС от Сидоровой М. И.</td>
-            <td>Нет № договора</td>
-            <td>—</td>
-            <td class="right tnum">2 000 ₽</td>
-            <td class="right"><button class="btn btn--ghost btn--small">К договору</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><div class="queue-row-meta">27.04.2026<br>op-114491</div></td>
-            <td>ПДС-2024-11034, сумма частичная</td>
-            <td>Сумма не совпала</td>
-            <td><span class="candidate-chip">ПДС-2024-11034</span></td>
-            <td class="right tnum">6 000 ₽</td>
-            <td class="right"><button class="btn btn--ghost btn--small">Уточнить</button></td>
-          </tr>
-          <tr>
-            <td><input type="checkbox"></td>
-            <td><div class="queue-row-meta">26.04.2026<br>op-114412</div></td>
-            <td>Программа долгосрочных сбережений, акт 8800219</td>
-            <td>Неверный формат</td>
-            <td>
-              <span class="candidate-chip">ПДС-2024-08802</span>
-              <span class="candidate-chip">ПДС-2024-88002</span>
-            </td>
-            <td class="right tnum">24 000 ₽</td>
-            <td class="right"><button class="btn btn--ghost btn--small">Сопоставить</button></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th style="width: 28px;"><input type="checkbox" aria-label="выбрать все"></th>
+              <th>Платёж</th>
+              <th>Назначение</th>
+              <th>Причина</th>
+              <th>Кандидаты</th>
+              <th class="right">Сумма</th>
+              <th class="right">Действие</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><div class="queue-row-meta">28.04.2026<br>op-114520</div></td>
+              <td>Взнос по программе долгосрочных сбережений, Петров П. П.</td>
+              <td>Нет № договора</td>
+              <td>
+                <span class="candidate-chip">ПДС-2025-04127</span>
+                <span class="candidate-chip">ПДС-2025-03901</span>
+              </td>
+              <td class="right tnum">36 000 ₽</td>
+              <td class="right"><button class="btn btn--ghost btn--small">Выбрать</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><div class="queue-row-meta">28.04.2026<br>op-114521</div></td>
+              <td>Оплата 2024088 12 Петрова Ирина Александровна</td>
+              <td>Неверный формат</td>
+              <td><span class="candidate-chip">ПДС-2024-08812</span></td>
+              <td class="right tnum">12 000 ₽</td>
+              <td class="right"><button class="btn btn--primary btn--small">Подтвердить</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><div class="queue-row-meta">28.04.2026<br>op-114529</div></td>
+              <td>Взнос ПДС-2025-00291, повторно</td>
+              <td>Дубль платежа</td>
+              <td>—</td>
+              <td class="right tnum">12 000 ₽</td>
+              <td class="right"><button class="btn btn--ghost btn--small">Вернуть</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><div class="queue-row-meta">27.04.2026<br>op-114488</div></td>
+              <td>Пополнение ПДС от Сидоровой М. И.</td>
+              <td>Нет № договора</td>
+              <td>—</td>
+              <td class="right tnum">2 000 ₽</td>
+              <td class="right"><button class="btn btn--ghost btn--small">К договору</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><div class="queue-row-meta">27.04.2026<br>op-114491</div></td>
+              <td>ПДС-2024-11034, сумма частичная</td>
+              <td>Сумма не совпала</td>
+              <td><span class="candidate-chip">ПДС-2024-11034</span></td>
+              <td class="right tnum">6 000 ₽</td>
+              <td class="right"><button class="btn btn--ghost btn--small">Уточнить</button></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox"></td>
+              <td><div class="queue-row-meta">26.04.2026<br>op-114412</div></td>
+              <td>Программа долгосрочных сбережений, акт 8800219</td>
+              <td>Неверный формат</td>
+              <td>
+                <span class="candidate-chip">ПДС-2024-08802</span>
+                <span class="candidate-chip">ПДС-2024-88002</span>
+              </td>
+              <td class="right tnum">24 000 ₽</td>
+              <td class="right"><button class="btn btn--ghost btn--small">Выбрать</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <footer class="footer-note">
-      <div>
-        Алгоритм матчинга: regex → fuzzy → ручная очередь. confidence пишется в журнал событий.
-      </div>
-      <div>
-        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
-      </div>
+      <div>Алгоритм: regex → fuzzy → ручная очередь. Confidence пишется в журнал событий для аудита.</div>
+      <div>А. Г. Монанкова · ВШЭ · 2026</div>
     </footer>
 
   </main>
 </div>
+<script src="js/app.js"></script>
 </body>
 </html>
