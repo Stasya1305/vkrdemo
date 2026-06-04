@@ -79,7 +79,14 @@ button { font-family: inherit; cursor: pointer; }
   min-height: 100vh;
   display: grid;
   grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "sidebar main";
 }
+
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.topbar  { grid-column: 1 / -1; }
+.mobile-nav { grid-column: 1 / -1; }
 
 /* ----- Sidebar ----- */
 
@@ -1220,11 +1227,18 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Mobile breakpoint: sidebar → topbar */
 @media (max-width: 760px) {
-  .app { grid-template-columns: 1fr; }
-
-  .sidebar {
-    display: none;
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "topbar"
+      "mobilenav"
+      "main";
   }
+
+  .topbar { grid-area: topbar; }
+  .mobile-nav { grid-area: mobilenav; }
+
+  .sidebar { display: none; }
 
   .topbar {
     display: flex;
