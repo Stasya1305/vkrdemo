@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
 <div class="app">
@@ -57,7 +57,7 @@
       <div class="sidebar__avatar">МА</div>
       <div class="sidebar__user-info">
         <div class="sidebar__user-name">Монанкова А. Г.</div>
-        <div class="sidebar__user-role">Отдел аналитики</div>
+        <div class="sidebar__user-role">Руководитель отдела аналитики</div>
       </div>
     </div>
   </aside>
@@ -160,8 +160,13 @@
       </div>
 
       <div class="about-card">
-        <h3>Целевые KPI</h3>
+        <h3>Целевые KPI <span style="font-weight: 400; color: var(--text-tertiary); font-size: 12px; margin-left: 4px;">8 показателей: управляемые + контекстные</span></h3>
         <div class="kpi-list">
+          <div class="kpi-list__item">
+            <span>Конверсия визит → договор <em style="color: var(--text-tertiary); font-size: 11px; font-style: normal;">· контекстный</em></span>
+            <span class="kpi-list__current">5,6%</span>
+            <span class="kpi-list__target" style="color: var(--text-tertiary);">мониторинг</span>
+          </div>
           <div class="kpi-list__item">
             <span>Конверсия договор → оплата</span>
             <span class="kpi-list__current">34%</span>
@@ -188,6 +193,11 @@
             <span class="kpi-list__target">≤ 5%</span>
           </div>
           <div class="kpi-list__item">
+            <span>Доля отклонённых заявлений ОПС</span>
+            <span class="kpi-list__current">—</span>
+            <span class="kpi-list__target" style="color: var(--text-tertiary);">мониторинг</span>
+          </div>
+          <div class="kpi-list__item">
             <span>Доля просроченных задач</span>
             <span class="kpi-list__current">—</span>
             <span class="kpi-list__target">≤ 10%</span>
@@ -201,11 +211,6 @@
       <h3>Модель данных <span style="font-weight: 400; color: var(--text-tertiary); font-size: 12.5px; margin-left: 6px;">упрощённая ER, реализация в PostgreSQL</span></h3>
       <p>Пять сущностей; в центре — договор. Все события связываются по <code style="font-family: var(--font-mono); background: var(--bg-card-soft); padding: 1px 6px; border-radius: 3px; font-size: 12px;">contract_id</code> — это сквозной идентификатор кейса для process mining.</p>
       <div class="er-grid">
-        <div class="er-entity">
-          <p class="er-entity__type">ENTITY</p>
-          <p class="er-entity__name">client</p>
-          <p class="er-entity__fields">client_id<br>name · phone</p>
-        </div>
         <div class="er-entity er-entity--core">
           <p class="er-entity__type">CORE</p>
           <p class="er-entity__name">contract</p>
@@ -220,6 +225,11 @@
           <p class="er-entity__type">ENTITY</p>
           <p class="er-entity__name">payment</p>
           <p class="er-entity__fields">payment_id<br>amount · confidence</p>
+        </div>
+        <div class="er-entity">
+          <p class="er-entity__type">ENTITY</p>
+          <p class="er-entity__name">ops_application</p>
+          <p class="er-entity__fields">application_id<br>submitted_at · status</p>
         </div>
         <div class="er-entity">
           <p class="er-entity__type">ENTITY</p>
