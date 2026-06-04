@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=7">
 </head>
 <body>
 <div class="app">
@@ -21,10 +21,7 @@
       <div class="brand__sub">пенсионные накопления</div>
     </div>
 
-    <div class="sidebar__module">
-      <span class="sidebar__module-name">Мониторинг ПДС</span>
-      <span class="sidebar__module-badge">v0.4</span>
-    </div>
+    <div class="sidebar__module"><span class="sidebar__module-name">Мониторинг онлайн-продаж ПДС</span></div>
 
     <nav class="nav">
       <a href="index.html" class="nav__item nav__item--active">
@@ -46,7 +43,6 @@
           <path d="M2 4h12M2 8h12M2 12h12"/>
         </svg>
         Очередь матчинга
-        <span class="nav__badge">406</span>
       </a>
       <a href="about.html" class="nav__item">
         <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -82,7 +78,7 @@
   <nav class="mobile-nav">
     <a href="index.html" class="nav__item nav__item--active">Дашборд</a>
     <a href="contract.html" class="nav__item">Карточка договора</a>
-    <a href="queue.html" class="nav__item">Очередь матчинга <span class="nav__badge">406</span></a>
+    <a href="queue.html" class="nav__item">Очередь матчинга</a>
     <a href="about.html" class="nav__item">Архитектура</a>
   </nav>
 
@@ -90,13 +86,10 @@
 
     <header class="page-header">
       <div class="page-header__left">
-        <div class="page-header__crumb">Мониторинг ПДС · Дашборд</div>
-        <h1 class="page-header__title">
-          Воронка онлайн-продаж
-          <span class="demo-tag">Demo data</span>
-        </h1>
+        <div class="page-header__crumb">Мониторинг онлайн-продаж ПДС · Дашборд</div>
+        <h1 class="page-header__title">Воронка онлайн-продаж</h1>
         <p class="page-header__subtitle">
-          <span class="sync-dot"></span>обновлено в 09:14<span class="dot">·</span>след. синхронизация в 10:14
+          Обновляется ежечасно<span class="dot">·</span>иллюстративные значения
         </p>
       </div>
       <div class="page-header__actions">
@@ -110,32 +103,32 @@
     </header>
 
     <div class="chips">
-      <span class="chip chip--active">Все каналы <span class="chip__count">4 820</span></span>
-      <span class="chip">CRM-рассылки <span class="chip__count">2 905</span></span>
-      <span class="chip">Интернет-реклама <span class="chip__count">1 422</span></span>
-      <span class="chip">Контакт-центр <span class="chip__count">493</span></span>
+      <span class="chip chip--active">Все каналы <span class="chip__count">5 000</span></span>
+      <span class="chip">CRM-рассылки <span class="chip__count">3 000</span></span>
+      <span class="chip">Интернет-реклама <span class="chip__count">1 500</span></span>
+      <span class="chip">Контакт-центр <span class="chip__count">500</span></span>
     </div>
 
     <section class="kpi-row">
       <div class="kpi-card">
-        <p class="kpi-card__label">Новых договоров<span class="kpi-card__hint" title="договоры за апрель 2026, онлайн-каналы">?</span></p>
-        <p class="kpi-card__value">4 820</p>
-        <p class="kpi-card__delta kpi-card__delta--up">↑ 3% к марту</p>
+        <p class="kpi-card__label">Договоров в месяц</p>
+        <p class="kpi-card__value">~5 000</p>
+        <p class="kpi-card__delta kpi-card__delta--neutral">онлайн-канал</p>
       </div>
       <div class="kpi-card">
         <p class="kpi-card__label">Конверсия в оплату</p>
         <p class="kpi-card__value">34%</p>
-        <p class="kpi-card__delta kpi-card__delta--down">−16 пп к цели 50%</p>
+        <p class="kpi-card__delta kpi-card__delta--down">цель ≥ 50%</p>
       </div>
       <div class="kpi-card">
-        <p class="kpi-card__label">Несопост. платежи</p>
-        <p class="kpi-card__value">8,4%</p>
-        <p class="kpi-card__delta kpi-card__delta--neutral">цель ≤ 5%</p>
+        <p class="kpi-card__label">Полный цикл завершают</p>
+        <p class="kpi-card__value">~1 100</p>
+        <p class="kpi-card__delta kpi-card__delta--neutral">22% от договоров</p>
       </div>
       <div class="kpi-card">
-        <p class="kpi-card__label">Просроч. задач</p>
-        <p class="kpi-card__value">143</p>
-        <p class="kpi-card__delta kpi-card__delta--down">↑ 12 за сутки</p>
+        <p class="kpi-card__label">Время до первой оплаты</p>
+        <p class="kpi-card__value">≤ 5 дней</p>
+        <p class="kpi-card__delta kpi-card__delta--neutral">медиана, целевой порог</p>
       </div>
     </section>
 
@@ -182,7 +175,7 @@
         </div>
 
         <div class="funnel__row">
-          <span class="funnel__label">Автоплатёж</span>
+          <span class="funnel__label">Автоплатеж</span>
           <div class="funnel__bar">
             <div class="funnel__fill funnel__fill--amber" style="width: 4%;">4%</div>
             <div class="funnel__target-marker" style="left: 20%;" title="Цель 20%"></div>
@@ -244,7 +237,7 @@
 
       <div class="section">
         <div class="section__head">
-          <h2 class="section__title">Несопост. платежи<span class="section__subtitle">причины, за период</span></h2>
+          <h2 class="section__title">Несопоставленные платежи<span class="section__subtitle">классификация причин</span></h2>
           <a class="section__action" href="queue.html">В очередь →</a>
         </div>
         <div class="table-wrap">
