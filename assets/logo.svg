@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" width="220" height="80">
+  <defs>
+    <style>
+      .bg { fill: #0079C2; }
+      .fg { fill: #FFFFFF; }
+      .accent { fill: #0079C2; }
+    </style>
+  </defs>
+  <rect class="bg" width="220" height="80" rx="6"/>
+  <!-- Stylized Г with flame -->
+  <g class="fg">
+    <path d="M14 14 L46 14 Q49 14 49 17 L49 24 L24 24 L24 56 Q24 60 20 60 L14 60 Z"/>
+    <!-- Flame -->
+    <path d="M37 18 C 33 23 33 28 36 32 C 33 30 32 27 33 24 C 31 28 31 33 35 36 C 32 35 30 32 30 28 C 28 33 31 38 36 39 C 41 38 44 33 42 28 C 42 32 40 35 37 36 C 41 33 41 28 39 24 C 40 27 39 30 36 32 C 39 28 39 23 37 18 Z"/>
+  </g>
+  <!-- ГАЗФОНД wordmark -->
+  <text x="58" y="38" class="fg" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="22" letter-spacing="0.5">ГАЗФОНД</text>
+  <!-- Pension savings strip -->
+  <rect x="58" y="46" width="148" height="16" rx="2" fill="#FFFFFF"/>
+  <text x="132" y="58" class="accent" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="9" text-anchor="middle" letter-spacing="0.8">ПЕНСИОННЫЕ НАКОПЛЕНИЯ</text>
+</svg>

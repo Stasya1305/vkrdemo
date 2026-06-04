@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Очередь несопоставленных платежей · ИС мониторинга ПДС</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    </div>
+    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <nav class="nav">
+      <a href="index.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="5" height="6" rx="1"/><rect x="9" y="2" width="5" height="3" rx="1"/>
+          <rect x="9" y="7" width="5" height="7" rx="1"/><rect x="2" y="10" width="5" height="4" rx="1"/>
+        </svg>
+        Дашборд
+      </a>
+      <a href="contract.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 2h7l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
+          <path d="M5 8h6M5 11h6M5 5h3"/>
+        </svg>
+        Карточка договора
+      </a>
+      <a href="queue.html" class="nav__item nav__item--active">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 4h12M2 8h12M2 12h12"/>
+          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
+        </svg>
+        Очередь матчинга
+      </a>
+      <a href="about.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="12" height="12" rx="2"/>
+          <path d="M5 5h6M5 8h6M5 11h3"/>
+        </svg>
+        Архитектура
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
+      Монанкова А.Г., 2026<br>
+      Бизнес-информатика, ВШЭ
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="page-header">
+      <div>
+        <h1 class="page-header__title">Очередь несопоставленных платежей</h1>
+        <p class="page-header__subtitle">
+          406 строк ожидают ручного матчинга<span class="dot">·</span>выписка от 28 апр. 2026
+        </p>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn--ghost">Загрузить выписку</button>
+        <button class="btn btn--primary">Применить выбранное</button>
+      </div>
+    </header>
+
+    <!-- KPI compact -->
+    <section class="kpi-row">
+      <div class="kpi-card">
+        <p class="kpi-card__label">Всего строк в выписке</p>
+        <p class="kpi-card__value">4 832</p>
+        <p class="kpi-card__delta kpi-card__delta--neutral">за апрель</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-card__label">Авто-матчинг (regex)</p>
+        <p class="kpi-card__value">3 962</p>
+        <p class="kpi-card__delta kpi-card__delta--up">82% · conf 1,0</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-card__label">Авто-матчинг (fuzzy)</p>
+        <p class="kpi-card__value">464</p>
+        <p class="kpi-card__delta kpi-card__delta--neutral">10% · conf 0,8</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-card__label">Ожидают ручной обработки</p>
+        <p class="kpi-card__value">406</p>
+        <p class="kpi-card__delta kpi-card__delta--down">8,4% · цель ≤ 5%</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="queue-toolbar">
+        <input class="search" type="text" placeholder="Поиск по сумме, описанию платежа или ИНН плательщика…">
+        <button class="btn btn--ghost">Все причины</button>
+        <button class="btn btn--ghost">Сумма ↓</button>
+      </div>
+
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th style="width: 28px;"><input type="checkbox" aria-label="выбрать все"></th>
+            <th>Платёж</th>
+            <th>Назначение (фрагмент)</th>
+            <th>Причина</th>
+            <th>Кандидаты</th>
+            <th class="right">Сумма</th>
+            <th class="right">Действие</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="queue-row-meta">28.04.2026<br>op-114520</div></td>
+            <td>Взнос по программе долгосрочных сбережений, Петров П. П.</td>
+            <td>Нет № договора</td>
+            <td>
+              <span class="candidate-chip">ПДС-2025-04127</span>
+              <span class="candidate-chip">ПДС-2025-03901</span>
+            </td>
+            <td class="right tnum">36 000 ₽</td>
+            <td class="right"><button class="btn btn--ghost btn--small">Сопоставить</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="queue-row-meta">28.04.2026<br>op-114521</div></td>
+            <td>Оплата 2024088 12 Петрова Ирина Александровна</td>
+            <td>Неверный формат</td>
+            <td><span class="candidate-chip">ПДС-2024-08812</span></td>
+            <td class="right tnum">12 000 ₽</td>
+            <td class="right"><button class="btn btn--primary btn--small">Подтвердить</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="queue-row-meta">28.04.2026<br>op-114529</div></td>
+            <td>Взнос ПДС-2025-00291, повторно</td>
+            <td>Дубль платежа</td>
+            <td>—</td>
+            <td class="right tnum">12 000 ₽</td>
+            <td class="right"><button class="btn btn--ghost btn--small">Вернуть</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="queue-row-meta">27.04.2026<br>op-114488</div></td>
+            <td>Пополнение ПДС от Сидоровой М. И.</td>
+            <td>Нет № договора</td>
+            <td>—</td>
+            <td class="right tnum">2 000 ₽</td>
+            <td class="right"><button class="btn btn--ghost btn--small">К договору</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="queue-row-meta">27.04.2026<br>op-114491</div></td>
+            <td>ПДС-2024-11034, сумма частичная</td>
+            <td>Сумма не совпала</td>
+            <td><span class="candidate-chip">ПДС-2024-11034</span></td>
+            <td class="right tnum">6 000 ₽</td>
+            <td class="right"><button class="btn btn--ghost btn--small">Уточнить</button></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox"></td>
+            <td><div class="queue-row-meta">26.04.2026<br>op-114412</div></td>
+            <td>Программа долгосрочных сбережений, акт 8800219</td>
+            <td>Неверный формат</td>
+            <td>
+              <span class="candidate-chip">ПДС-2024-08802</span>
+              <span class="candidate-chip">ПДС-2024-88002</span>
+            </td>
+            <td class="right tnum">24 000 ₽</td>
+            <td class="right"><button class="btn btn--ghost btn--small">Сопоставить</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="footer-note">
+      <div>
+        Алгоритм матчинга: regex → fuzzy → ручная очередь. confidence пишется в журнал событий.
+      </div>
+      <div>
+        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
+      </div>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мониторинг онлайн-продаж ПДС · НПФ ГАЗФОНД ПН</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- =========== Sidebar =========== -->
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    </div>
+    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <nav class="nav">
+      <a href="index.html" class="nav__item nav__item--active">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="5" height="6" rx="1"/><rect x="9" y="2" width="5" height="3" rx="1"/>
+          <rect x="9" y="7" width="5" height="7" rx="1"/><rect x="2" y="10" width="5" height="4" rx="1"/>
+        </svg>
+        Дашборд
+      </a>
+      <a href="contract.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 2h7l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
+          <path d="M5 8h6M5 11h6M5 5h3"/>
+        </svg>
+        Карточка договора
+      </a>
+      <a href="queue.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 4h12M2 8h12M2 12h12"/>
+          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
+        </svg>
+        Очередь матчинга
+      </a>
+      <a href="about.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="12" height="12" rx="2"/>
+          <path d="M5 5h6M5 8h6M5 11h3"/>
+        </svg>
+        Архитектура
+      </a>
+    </nav>
+
+    <div class="sidebar__footer">
+      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
+      Монанкова А.Г., 2026<br>
+      Бизнес-информатика, ВШЭ
+    </div>
+  </aside>
+
+  <!-- =========== Main =========== -->
+  <main class="main">
+
+    <header class="page-header">
+      <div>
+        <h1 class="page-header__title">Мониторинг онлайн-продаж ПДС</h1>
+        <p class="page-header__subtitle">
+          Апрель 2026<span class="dot">·</span>обновлено 15 минут назад
+        </p>
+      </div>
+      <button class="period-selector">
+        Апрель 2026
+        <svg class="period-selector__chevron" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M3 5l3 3 3-3"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- KPI cards -->
+    <section class="kpi-row">
+      <div class="kpi-card">
+        <p class="kpi-card__label">Новых договоров</p>
+        <p class="kpi-card__value">4 820</p>
+        <p class="kpi-card__delta kpi-card__delta--up">+3% к марту</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-card__label">Конверсия в оплату</p>
+        <p class="kpi-card__value">34%</p>
+        <p class="kpi-card__delta kpi-card__delta--down">−16 пп к цели (50%)</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-card__label">Несопост. платежей</p>
+        <p class="kpi-card__value">8,4%</p>
+        <p class="kpi-card__delta kpi-card__delta--neutral">цель ≤ 5%</p>
+      </div>
+      <div class="kpi-card">
+        <p class="kpi-card__label">Просроч. задач</p>
+        <p class="kpi-card__value">143</p>
+        <p class="kpi-card__delta kpi-card__delta--down">↑ 12 за сутки</p>
+      </div>
+    </section>
+
+    <!-- Funnel -->
+    <section class="section">
+      <h2 class="section__title">Воронка конверсии · апрель 2026</h2>
+      <div class="funnel">
+
+        <div class="funnel__row">
+          <span class="funnel__label">Визит → договор</span>
+          <div class="funnel__bar">
+            <div class="funnel__fill funnel__fill--blue" style="width: 5.6%;">5,6%</div>
+            <div class="funnel__target-marker" style="left: 8%;" title="Цель 8%"></div>
+          </div>
+          <div class="funnel__meta">
+            <span class="funnel__value">5,6%</span>
+            <span class="funnel__target">цель 8%</span>
+          </div>
+        </div>
+
+        <div class="funnel__row">
+          <span class="funnel__label">Договор → оплата</span>
+          <div class="funnel__bar">
+            <div class="funnel__fill funnel__fill--blue" style="width: 34%;">34%</div>
+            <div class="funnel__target-marker" style="left: 50%;" title="Цель 50%"></div>
+          </div>
+          <div class="funnel__meta">
+            <span class="funnel__value">34%</span>
+            <span class="funnel__target">цель 50%</span>
+          </div>
+        </div>
+
+        <div class="funnel__row">
+          <span class="funnel__label">Договор → ОПС</span>
+          <div class="funnel__bar">
+            <div class="funnel__fill funnel__fill--green" style="width: 64%;">64%</div>
+            <div class="funnel__target-marker" style="left: 75%;" title="Цель 75%"></div>
+          </div>
+          <div class="funnel__meta">
+            <span class="funnel__value">64%</span>
+            <span class="funnel__target">цель 75%</span>
+          </div>
+        </div>
+
+        <div class="funnel__row">
+          <span class="funnel__label">Автоплатёж</span>
+          <div class="funnel__bar">
+            <div class="funnel__fill funnel__fill--amber" style="width: 4%;">4%</div>
+            <div class="funnel__target-marker" style="left: 20%;" title="Цель 20%"></div>
+          </div>
+          <div class="funnel__meta">
+            <span class="funnel__value">4%</span>
+            <span class="funnel__target">цель 20%</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Dual panels -->
+    <section class="dual-row">
+      <div class="section">
+        <h2 class="section__title">Просроченные задачи</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Договор</th>
+              <th>Тип</th>
+              <th class="right">Дней</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a class="contract-link" href="contract.html">ПДС-2024-08812</a></td>
+              <td>Оплата</td>
+              <td class="right"><span class="pill pill--days">14</span></td>
+            </tr>
+            <tr>
+              <td><a class="contract-link" href="contract.html">ПДС-2024-11034</a></td>
+              <td>ОПС</td>
+              <td class="right"><span class="pill pill--days">8</span></td>
+            </tr>
+            <tr>
+              <td><a class="contract-link" href="contract.html">ПДС-2025-00291</a></td>
+              <td>Оплата</td>
+              <td class="right"><span class="pill pill--days-low">5</span></td>
+            </tr>
+            <tr>
+              <td><a class="contract-link" href="contract.html">ПДС-2025-03901</a></td>
+              <td>Оплата</td>
+              <td class="right"><span class="pill pill--days-low">1</span></td>
+            </tr>
+            <tr>
+              <td><a class="contract-link" href="contract.html">ПДС-2025-04127</a></td>
+              <td>ОПС</td>
+              <td class="right"><span class="pill pill--days-low">1</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2 class="section__title">Несопост. платежи: причины</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Причина</th>
+              <th class="right">Кол-во</th>
+              <th class="right">Доля</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Нет № договора</td>
+              <td class="right tnum">187</td>
+              <td class="right"><span class="pill pill--share">46%</span></td>
+            </tr>
+            <tr>
+              <td>Неверный формат</td>
+              <td class="right tnum">94</td>
+              <td class="right"><span class="pill pill--share-low">23%</span></td>
+            </tr>
+            <tr>
+              <td>Дубль платежа</td>
+              <td class="right tnum">72</td>
+              <td class="right"><span class="pill pill--share-low">18%</span></td>
+            </tr>
+            <tr>
+              <td>Сумма не совпала</td>
+              <td class="right tnum">53</td>
+              <td class="right"><span class="pill pill--share-low">13%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer-note">
+      <div>
+        Прототип системы мониторинга онлайн-продаж ПДС. Данные иллюстративные.
+      </div>
+      <div>
+        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>

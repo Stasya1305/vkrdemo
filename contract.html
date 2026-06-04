@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Карточка договора · ПДС-2024-08812</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    </div>
+    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <nav class="nav">
+      <a href="index.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="5" height="6" rx="1"/><rect x="9" y="2" width="5" height="3" rx="1"/>
+          <rect x="9" y="7" width="5" height="7" rx="1"/><rect x="2" y="10" width="5" height="4" rx="1"/>
+        </svg>
+        Дашборд
+      </a>
+      <a href="contract.html" class="nav__item nav__item--active">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 2h7l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
+          <path d="M5 8h6M5 11h6M5 5h3"/>
+        </svg>
+        Карточка договора
+      </a>
+      <a href="queue.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 4h12M2 8h12M2 12h12"/>
+          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
+        </svg>
+        Очередь матчинга
+      </a>
+      <a href="about.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="12" height="12" rx="2"/>
+          <path d="M5 5h6M5 8h6M5 11h3"/>
+        </svg>
+        Архитектура
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
+      Монанкова А.Г., 2026<br>
+      Бизнес-информатика, ВШЭ
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="page-header">
+      <div>
+        <h1 class="page-header__title">Карточка договора</h1>
+        <p class="page-header__subtitle">Полная лента событий и активные задачи</p>
+      </div>
+      <a href="index.html" class="btn btn--ghost">← К дашборду</a>
+    </header>
+
+    <!-- Contract header -->
+    <div class="contract-header">
+      <div>
+        <p class="contract-header__no">ПДС-2024-08812</p>
+        <h2 class="contract-header__name">Петрова Ирина Александровна</h2>
+        <p class="contract-header__meta">
+          Оформлен 12 апр. 2026<span class="dot" style="margin: 0 6px; opacity: 0.5;">·</span>канал: CRM-рассылка<span class="dot" style="margin: 0 6px; opacity: 0.5;">·</span>менеджер: Смирнова А.В.
+        </p>
+      </div>
+      <div class="contract-header__status">
+        <span class="pill pill--status">Ожидает оплаты</span>
+        <span class="contract-header__overdue">Просрочено 14 дней</span>
+      </div>
+    </div>
+
+    <!-- Tracks -->
+    <div class="track-row">
+      <div class="track track--danger">
+        <p class="track__label">Трек: Оплата</p>
+        <p class="track__status">Не оплачен</p>
+        <p class="track__meta">14 дней без платежа</p>
+      </div>
+      <div class="track">
+        <p class="track__label">Трек: ОПС</p>
+        <p class="track__status" style="color: var(--text-primary);">Не подано</p>
+        <p class="track__meta">ОПС применимо</p>
+      </div>
+      <div class="track track--neutral">
+        <p class="track__label">Трек: Автоплатёж</p>
+        <p class="track__status">Не подключён</p>
+        <p class="track__meta">Доступно после оплаты</p>
+      </div>
+    </div>
+
+    <!-- Body: history + tasks/data -->
+    <div class="contract-body">
+
+      <!-- Left: history -->
+      <div class="section">
+        <h2 class="section__title">История событий</h2>
+        <div class="timeline">
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <div>
+              <p class="timeline__time">12 апр. 2026, 14:23</p>
+              <p class="timeline__title">Договор подписан</p>
+              <p class="timeline__source">Система · CONTRACT_SIGNED</p>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot"></span>
+            <div>
+              <p class="timeline__time">12 апр. 2026, 14:24</p>
+              <p class="timeline__title">Онбординг-рассылка отправлена</p>
+              <p class="timeline__source">CRM-система · EMAIL_SENT</p>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot timeline__dot--warning"></span>
+            <div>
+              <p class="timeline__time">19 апр. 2026, 09:00</p>
+              <p class="timeline__title">КТ-1: оплата не получена (день 7)</p>
+              <p class="timeline__source">Система · TASK_CREATED</p>
+            </div>
+          </div>
+
+          <div class="timeline__item">
+            <span class="timeline__dot timeline__dot--danger"></span>
+            <div>
+              <p class="timeline__time">26 апр. 2026, 09:00</p>
+              <p class="timeline__title">КТ-2: эскалация руководителю (день 14)</p>
+              <p class="timeline__source">Система · TASK_ESCALATED</p>
+            </div>
+          </div>
+
+          <div class="timeline__item timeline__item--pending">
+            <span class="timeline__dot timeline__dot--pending"></span>
+            <div>
+              <p class="timeline__time">Ожидание</p>
+              <p class="timeline__title">Первый платёж</p>
+              <p class="timeline__source">PAYMENT_MATCHED — не получено</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: tasks + client data -->
+      <div class="section">
+        <h2 class="section__title">Активные задачи</h2>
+
+        <div class="task-box">
+          <p class="task-box__title">Связаться с клиентом по оплате</p>
+          <p class="task-box__meta">Просрочено 7 дней · назначено: Смирнова А.В.</p>
+        </div>
+
+        <h2 class="section__title">Данные клиента</h2>
+        <div class="data-list">
+          <div class="data-list__row">
+            <span class="data-list__label">Телефон</span>
+            <span class="data-list__value">+7 916 *** 4421</span>
+          </div>
+          <div class="data-list__row">
+            <span class="data-list__label">Email</span>
+            <span class="data-list__value">i.petro***@mail.ru</span>
+          </div>
+          <div class="data-list__row">
+            <span class="data-list__label">ОПС применимо</span>
+            <span class="data-list__value">Да</span>
+          </div>
+          <div class="data-list__row">
+            <span class="data-list__label">Канал</span>
+            <span class="data-list__value">CRM-рассылка</span>
+          </div>
+          <div class="data-list__row">
+            <span class="data-list__label">Сумма договора</span>
+            <span class="data-list__value">12 000 ₽ / год</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="footer-note">
+      <div>
+        Прототип карточки договора. Персональные данные обезличены (152-ФЗ).
+      </div>
+      <div>
+        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
+      </div>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>

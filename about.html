@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Архитектура · ИС мониторинга ПДС</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="assets/logo.svg" alt="НПФ ГАЗФОНД пенсионные накопления">
+    </div>
+    <div class="sidebar__caption">Мониторинг ПДС</div>
+    <nav class="nav">
+      <a href="index.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="5" height="6" rx="1"/><rect x="9" y="2" width="5" height="3" rx="1"/>
+          <rect x="9" y="7" width="5" height="7" rx="1"/><rect x="2" y="10" width="5" height="4" rx="1"/>
+        </svg>
+        Дашборд
+      </a>
+      <a href="contract.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 2h7l3 3v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
+          <path d="M5 8h6M5 11h6M5 5h3"/>
+        </svg>
+        Карточка договора
+      </a>
+      <a href="queue.html" class="nav__item">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 4h12M2 8h12M2 12h12"/>
+          <circle cx="4" cy="4" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="8" r="0.5" fill="currentColor"/>
+          <circle cx="4" cy="12" r="0.5" fill="currentColor"/>
+        </svg>
+        Очередь матчинга
+      </a>
+      <a href="about.html" class="nav__item nav__item--active">
+        <svg class="nav__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="2" width="12" height="12" rx="2"/>
+          <path d="M5 5h6M5 8h6M5 11h3"/>
+        </svg>
+        Архитектура
+      </a>
+    </nav>
+    <div class="sidebar__footer">
+      <div style="font-weight: 600; color: rgba(255,255,255,0.85); margin-bottom: 2px;">ВКР · Прототип</div>
+      Монанкова А.Г., 2026<br>
+      Бизнес-информатика, ВШЭ
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="page-header">
+      <div>
+        <h1 class="page-header__title">Архитектура системы</h1>
+        <p class="page-header__subtitle">
+          Трёхуровневая модель<span class="dot">·</span>5 функциональных модулей<span class="dot">·</span>журнал событий append-only
+        </p>
+      </div>
+    </header>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>Стек технологий</h3>
+        <div class="archi-stack">
+          <div class="archi-layer archi-layer--frontend">
+            <p class="archi-layer__label">Уровень представления</p>
+            <p class="archi-layer__tech">React SPA</p>
+            <p class="archi-layer__desc">Реестр договоров · карточка · дашборд · очередь матчинга</p>
+          </div>
+          <div class="archi-arrow">↓ REST API ↓</div>
+          <div class="archi-layer archi-layer--backend">
+            <p class="archi-layer__label">Уровень бизнес-логики</p>
+            <p class="archi-layer__tech">FastAPI (Python)</p>
+            <p class="archi-layer__desc">5 модулей · алгоритм матчинга · триггеры КТ · расчёт KPI</p>
+          </div>
+          <div class="archi-arrow">↓ SQL ↓</div>
+          <div class="archi-layer archi-layer--data">
+            <p class="archi-layer__label">Уровень данных</p>
+            <p class="archi-layer__tech">PostgreSQL</p>
+            <p class="archi-layer__desc">5 сущностей · журнал событий append-only · JSONB для атрибутов</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h3>Принципы проектирования</h3>
+        <ul>
+          <li>Единый идентификатор кейса — № договора, связывающий события из всех систем</li>
+          <li>Журнал событий append-only: ошибка исправляется корректирующим событием, DELETE не доступен</li>
+          <li>Модульность: новое событие или KPI без изменения ядра</li>
+          <li>Наблюдаемость кейса: всегда виден текущий статус и следующий ожидаемый шаг</li>
+          <li>Принцип минимальных привилегий: RBAC, 5 ролей</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>Модули системы</h3>
+        <div class="modules">
+          <div class="module">
+            <p class="module__num">МОДУЛЬ 1</p>
+            <p class="module__name">Реестр и карточка договора</p>
+          </div>
+          <div class="module">
+            <p class="module__num">МОДУЛЬ 2</p>
+            <p class="module__name">Импорт выписок и матчинг</p>
+          </div>
+          <div class="module">
+            <p class="module__num">МОДУЛЬ 3</p>
+            <p class="module__name">Статусный поток ОПС</p>
+          </div>
+          <div class="module">
+            <p class="module__num">МОДУЛЬ 4</p>
+            <p class="module__name">Задачи и уведомления</p>
+          </div>
+          <div class="module" style="grid-column: span 2;">
+            <p class="module__num">МОДУЛЬ 5</p>
+            <p class="module__name">Дашборд и отчётность</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h3>Целевые KPI (TO-BE)</h3>
+        <div class="kpi-list">
+          <div class="kpi-list__item">
+            <span>Конверсия договор → оплата</span>
+            <span class="kpi-list__current">34%</span>
+            <span class="kpi-list__target">≥ 50%</span>
+          </div>
+          <div class="kpi-list__item">
+            <span>Конверсия договор → ОПС</span>
+            <span class="kpi-list__current">64%</span>
+            <span class="kpi-list__target">≥ 75%</span>
+          </div>
+          <div class="kpi-list__item">
+            <span>Доля с автоплатежом</span>
+            <span class="kpi-list__current">4%</span>
+            <span class="kpi-list__target">≥ 20%</span>
+          </div>
+          <div class="kpi-list__item">
+            <span>Время до первой оплаты (медиана)</span>
+            <span class="kpi-list__current">—</span>
+            <span class="kpi-list__target">≤ 5 дней</span>
+          </div>
+          <div class="kpi-list__item">
+            <span>Доля несопоставленных платежей</span>
+            <span class="kpi-list__current">8,4%</span>
+            <span class="kpi-list__target">≤ 5%</span>
+          </div>
+          <div class="kpi-list__item">
+            <span>Доля просроченных задач</span>
+            <span class="kpi-list__current">—</span>
+            <span class="kpi-list__target">≤ 10%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ER scheme as a card -->
+    <div class="about-card" style="margin-bottom: 20px;">
+      <h3>Модель данных (упрощённая ER)</h3>
+      <p>Пять сущностей, в центре — договор. Все события связываются по <code style="font-family: var(--font-mono); background: var(--bg-card-soft); padding: 1px 6px; border-radius: 3px;">contract_id</code> — это сквозной идентификатор кейса для process mining.</p>
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 14px;">
+        <div class="module" style="text-align: center;">
+          <p class="module__num">ENTITY</p>
+          <p class="module__name">client</p>
+          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">client_id<br>name · phone</p>
+        </div>
+        <div class="module" style="text-align: center; border-color: var(--brand-primary); background: var(--brand-primary-ghost);">
+          <p class="module__num">CORE</p>
+          <p class="module__name">contract</p>
+          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">contract_id<br>signed_at · channel</p>
+        </div>
+        <div class="module" style="text-align: center;">
+          <p class="module__num">LOG</p>
+          <p class="module__name">event</p>
+          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">event_id · type<br>occurred_at · jsonb</p>
+        </div>
+        <div class="module" style="text-align: center;">
+          <p class="module__num">ENTITY</p>
+          <p class="module__name">payment</p>
+          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">payment_id<br>amount · confidence</p>
+        </div>
+        <div class="module" style="text-align: center;">
+          <p class="module__num">ENTITY</p>
+          <p class="module__name">task</p>
+          <p style="font-size: 11px; color: var(--text-tertiary); margin: 4px 0 0; font-family: var(--font-mono);">task_id · trigger<br>deadline · status</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-card" style="margin-bottom: 20px;">
+      <h3>Алгоритм матчинга платежей</h3>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px;">
+        <div style="padding: 16px; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-card-soft);">
+          <p style="font-size: 10.5px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.6px; margin: 0 0 4px;">УРОВЕНЬ 1 · REGEX</p>
+          <p style="font-size: 13px; font-weight: 600; margin: 0 0 6px;">Точное совпадение</p>
+          <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Шаблон <code style="font-family: var(--font-mono);">ПДС-\d{4}-\d{6}</code> · confidence = 1,0 · автоматически</p>
+        </div>
+        <div style="padding: 16px; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-card-soft);">
+          <p style="font-size: 10.5px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.6px; margin: 0 0 4px;">УРОВЕНЬ 2 · FUZZY</p>
+          <p style="font-size: 13px; font-weight: 600; margin: 0 0 6px;">Нечёткий поиск</p>
+          <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">10-значная числовая последовательность · confidence = 0,8 · авто <em>только при единственном кандидате</em></p>
+        </div>
+        <div style="padding: 16px; border: 1px solid var(--border-default); border-radius: var(--radius-md); background: var(--bg-card-soft);">
+          <p style="font-size: 10.5px; font-weight: 700; color: var(--brand-primary); letter-spacing: 0.6px; margin: 0 0 4px;">УРОВЕНЬ 3 · MANUAL</p>
+          <p style="font-size: 13px; font-weight: 600; margin: 0 0 6px;">Ручная очередь</p>
+          <p style="font-size: 12px; color: var(--text-secondary); margin: 0;">Сопоставление невозможно → бэк-офис, причина из классификатора</p>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-note">
+      <div>
+        Архитектура и проектные решения соответствуют главе 3 ВКР.
+      </div>
+      <div>
+        Источник проектных решений: ВКР Монанковой А.Г. (ВШЭ, 2026)
+      </div>
+    </footer>
+
+  </main>
+</div>
+</body>
+</html>
